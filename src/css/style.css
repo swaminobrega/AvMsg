@@ -1,0 +1,46 @@
+html,
+body,
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-image: url("../image/back.jpg");
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+#quadro {
+  background-color: rgb(241, 241, 241);
+  border-radius: 10px;
+  opacity: 0.6;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#logo {
+  width: 500px;
+  padding: 30px;
+  margin: 30px;
+}
+
+#painel {
+  text-align: center;
+  padding: 10px;
+}
+
+#email {
+  border: 0px;
+}
+
+#password {
+  border: 0px;
+}
+
+#cadastro {
+  font-size: 11px;
+}
+

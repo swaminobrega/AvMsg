@@ -1,0 +1,97 @@
+#botaoAtualizarRecados {
+    display: none;
+}
+
+body {
+    background-image: url("../image/back.jpg");
+    background-repeat: no-repeat;
+    background-position: right;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+table, th, td {  
+    border: none;   
+    border-collapse: collapse;  
+}  
+  
+th, td {  
+    padding: 10px; 
+    width: 200px;
+    text-align: center;
+    border-radius: 5px;
+}  
+  
+table th {  
+    color: white;  
+    background-color: rgb(95, 115, 131);  
+}  
+  
+tbody th{
+    opacity: .8;
+}
+  
+img{
+    margin: 0 10px 0 10px;
+}
+  
+input[type=submit]{
+    all: unset;
+    background-color: rgb(95, 115, 131);
+    color: white;
+    border: none;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+}
+  
+div#msg-erro{
+    color: red
+    
+}
+
+
+td, th {
+  padding: 5px;
+  margin-left: 30px;
+  /*border: 1px solid #ccc;*/
+  text-align: center;
+
+}
+
+table{
+    width: 100%;
+    margin-bottom : .5em;
+    table-layout: fixed;
+    text-align: center;
+    
+  }
+
+  tr:hover {
+    background-color: gainsboro;
+  }
+
+  th#thid {
+      width: 25px;
+  }
+
+  th#thdescri {
+    width: 130px;
+  }
+
+  th#thdet {
+    width: 400px;
+  }
+
+  th#thacao {
+    width: 70px;
+  }
+
+  input#descricao {
+    width:20%;
+    
+  }
+
+  input#detalhamento {
+    width:43%;
+    
+  }
