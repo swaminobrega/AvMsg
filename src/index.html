@@ -21,7 +21,7 @@
         /><br />
         <label for="password">Senha</label><br />
         <input
-          placeholder="Sua melhor senha"
+          placeholder="Sua melhor senha."
           type="password"
           name="password"
           id="password"
@@ -33,49 +33,6 @@
         </p>
       </div>
     </form>
-    <script>
-      const form = document.querySelector("#quadro");
-      //parte de login
-      form.addEventListener("submit", (event) => {
-        event.preventDefault();
-
-        const listaUsuarios = JSON.parse(localStorage.getItem("users"));
-        //console.log(listaUsuarios);
-        const login = form.email.value;
-        const senha = form.password.value;
-
-        const usuarioLogado = listaUsuarios.find(
-          (usuario) => usuario.email === login && usuario.password === senha
-        );
-
-        if (usuarioLogado === undefined) {
-          alert("Usuário e Senha inválidos, Favor repetir os dados");
-          return;
-        }
-
-        location.href = "./menssagem.html";
-      });
-
-      // //parte de cadastro
-      // form.addEventListener("submit", (event) => {
-      //   event.preventDefault();
-
-      //   const usuarioSalvo = JSON.parse(localStorage.getItem("users"));
-
-      //   const login = form.email.value;
-      //   const senha = form.password.value;
-
-      //   usuarioSalvos.some((usuario) => usuario.email === email);
-      // });
-
-      // if (usuarioJaExiste) {
-      //   alert("Usuario ja cadastrado!!!");
-      // }
-
-      // usuarioLogado.push({
-      //   email: login,
-      //   password: senha,
-      // });
-    </script>
+    <script src="./index.js"></script>
   </body>
 </html>

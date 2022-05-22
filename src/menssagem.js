@@ -16,7 +16,7 @@ const salvarRecado = (event) => {
     recados.push({
         id: definirID() + 1,
         descricao,
-        recado
+        recado,
     });
     atualizarLocalStorage(recados);
     alert("Recado adicionado com sucesso");
@@ -50,22 +50,6 @@ const removeRecado = (id) => {
     alert("Recado removido com sucesso");
     preencherTabela();
 };
-// const editaRecado = (id: number) => {
-//   // recupera a lista do localStorage
-//   const recados = recuperarLocalStorage();
-//   // procura o indice do produto na lista conforme o identificado passado
-//   const indiceRecado = recados.findIndex((recado) => recado.id === id);
-//   // quando o findIndex não encontra ele retorna -1
-//   // então por isso é verificado se o indice é menor que o 0
-//   if (indiceRecado) return;
-//   // remove o produto da lista
-//   recados.map(recados);
-//   // atualiza o localStorage
-//   atualizarLocalStorage(recados);
-//   alert("Recado alterado com sucesso");
-//   // atualiza a tabela no html
-//   preencherTabela();
-// };
 const definirID = () => {
     let max = 0;
     const recados = recuperarLocalStorage();
@@ -78,13 +62,3 @@ const definirID = () => {
 };
 form?.addEventListener("submit", salvarRecado);
 document.addEventListener("DOMContentLoaded", preencherTabela);
-
-// Parte de logout
-// document.getElementById("logouts").addEventListener("click", logout);
-
-// function logout (){
-//     sessionStorage.removeItem("logged");
-//     localStorage.removeItem("session");
-
-//     window.location.href = "index.html";
-// }

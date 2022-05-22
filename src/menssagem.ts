@@ -21,16 +21,16 @@ const atualizarLocalStorage = (recados: Array<Recado>) => {
 
 const salvarRecado = (event: Event) => {
   event.preventDefault();
-  
+
   const descricao = form?.descricao.value;
   const recado = form?.detalhamento.value;
-    
+
   const recados = recuperarLocalStorage();
 
   recados.push({
     id: definirID() + 1,
     descricao,
-    recado
+    recado,
   });
 
   atualizarLocalStorage(recados);
@@ -43,13 +43,11 @@ const salvarRecado = (event: Event) => {
 };
 
 const preencherTabela = () => {
-  
   const recados = recuperarLocalStorage();
 
   corpoTabela.innerHTML = "";
 
   for (const recado of recados) {
-    
     corpoTabela.innerHTML += `
         <tr>
             <td>${recado.id}.</td>
@@ -65,7 +63,6 @@ const preencherTabela = () => {
 };
 
 const removeRecado = (id: number) => {
- 
   const recados = recuperarLocalStorage();
 
   const indiceRecado = recados.findIndex((recado) => recado.id === id);
@@ -80,32 +77,6 @@ const removeRecado = (id: number) => {
 
   preencherTabela();
 };
-
-
-
-// const editaRecado = (id: number) => {
-//   // recupera a lista do localStorage
-//   const recados = recuperarLocalStorage();
-
-//   // procura o indice do produto na lista conforme o identificado passado
-//   const indiceRecado = recados.findIndex((recado) => recado.id === id);
-
-//   // quando o findIndex não encontra ele retorna -1
-//   // então por isso é verificado se o indice é menor que o 0
-//   if (indiceRecado) return;
-
-//   // remove o produto da lista
-//   recados.map(recados);
-
-//   // atualiza o localStorage
-//   atualizarLocalStorage(recados);
-
-//   alert("Recado alterado com sucesso");
-
-//   // atualiza a tabela no html
-//   preencherTabela();
-// };
-
 
 const definirID = () => {
   let max = 0;
