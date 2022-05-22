@@ -78,3 +78,13 @@ const definirID = () => {
 };
 form?.addEventListener("submit", salvarRecado);
 document.addEventListener("DOMContentLoaded", preencherTabela);
+
+// Parte de logout
+// document.getElementById("logouts").addEventListener("click", logout);
+
+// function logout (){
+//     sessionStorage.removeItem("logged");
+//     localStorage.removeItem("session");
+
+//     window.location.href = "index.html";
+// }
