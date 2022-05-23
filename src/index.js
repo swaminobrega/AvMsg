@@ -8,8 +8,8 @@ form.addEventListener("submit", (event) => {
 
   const listaUsuarios = localStorage.getItem(login.value);
   const listaObjetos = JSON.parse(listaUsuarios);
-  console.log(listaUsuarios);
-  console.log(listaObjetos);
+  //console.log(listaUsuarios);
+  //console.log(listaObjetos);
 
   if (!login.value || !senha.value) {
     alert("Todos os campos são de preenchimento obrigatório");
