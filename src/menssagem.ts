@@ -107,7 +107,6 @@ const editarRecado = (id: number) => {
 
   editarMenssagem = true;
   indiceEditar = indiceRecado1;
-
 };
 
 const definirID = () => {
