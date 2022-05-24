@@ -6,28 +6,24 @@ form.addEventListener("submit", (event) => {
   const login = document.getElementById("email");
   const senha = document.getElementById("password");
 
-  const listaUsuarios = localStorage.getItem(login.value);
-  const listaObjetos = JSON.parse(listaUsuarios);
-  //console.log(listaUsuarios);
-  //console.log(listaObjetos);
-
+  const listaUsuarios = JSON.parse(localStorage.getItem("usuarios") ?? "[]")
+  
   if (!login.value || !senha.value) {
     alert("Todos os campos são de preenchimento obrigatório");
     return;
   }
-  if (!listaUsuarios || listaObjetos.senha !== senha.value) {
+
+  const usuarioExistente = listaUsuarios.find(usuario => usuario.email === login.value && usuario.senha === senha.value)
+
+  if (!usuarioExistente) {
     alert("Usuario e/ou senha não cadastrados.");
     return;
   }
 
-  if (
-    listaObjetos.email === login.value &&
-    listaObjetos.senha === senha.value
-  ) {
+  localStorage.setItem("usuariologado", JSON.stringify(login.value))
+
     alert("Login realizado com sucesso!");
 
-  
-
     location.href = "./menssagem.html";
-  }
+  
 });

@@ -1,22 +1,27 @@
 const form = document.querySelector("#infos_mens") as HTMLFormElement;
 const corpoTabela = document.querySelector("#tbody") as HTMLElement;
 
+const usuariologado = JSON.parse(localStorage.getItem("usuariologado") ?? "");
+console.log(usuariologado);
 interface Recado {
   id: number;
   descricao: string;
   recado: string;
 }
 
+let editarMenssagem = false;
+let indiceEditar = 0;
+
 const recuperarLocalStorage = (): Array<Recado> => {
   const recados = JSON.parse(
-    localStorage.getItem("recados") || "[]"
+    localStorage.getItem(usuariologado) || "[]"
   ) as Array<Recado>;
 
   return recados;
 };
 
 const atualizarLocalStorage = (recados: Array<Recado>) => {
-  localStorage.setItem("recados", JSON.stringify(recados));
+  localStorage.setItem(usuariologado, JSON.stringify(recados));
 };
 
 const salvarRecado = (event: Event) => {
@@ -27,15 +32,23 @@ const salvarRecado = (event: Event) => {
 
   const recados = recuperarLocalStorage();
 
-  recados.push({
-    id: definirID() + 1,
-    descricao,
-    recado,
-  });
+  if (editarMenssagem === true) {
+    recados[indiceEditar].descricao = descricao;
+    recados[indiceEditar].recado = recado;
+
+    alert("Edição de menssagem realizada");
+
+    editarMenssagem = false;
+  } else {
+    recados.push({
+      id: definirID() + 1,
+      descricao,
+      recado,
+    });
+    alert("Recado adicionado com sucesso");
+  }
 
   atualizarLocalStorage(recados);
-
-  alert("Recado adicionado com sucesso");
 
   preencherTabela();
 
@@ -89,13 +102,12 @@ const editarRecado = (id: number) => {
   if (indiceRecado1 < 0) return;
 
   console.log(listarecados[indiceRecado1]);
+  form.descricao.value = listarecados[indiceRecado1].descricao;
+  form.detalhamento.value = listarecados[indiceRecado1].recado;
 
-  listarecados[indiceRecado1].descricao = form.descricao.value;
-  listarecados[indiceRecado1].recado = form.detalhamento.value;
+  editarMenssagem = true;
+  indiceEditar = indiceRecado1;
 
-  atualizarLocalStorage(listarecados);
-
-  preencherTabela();
 };
 
 const definirID = () => {

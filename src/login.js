@@ -1,15 +1,19 @@
 const form = document.getElementById('quadro11');
 
+
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-
+  const listaUsuarios = JSON.parse(localStorage.getItem("usuarios") ?? "[]")  
   const login = document.getElementById("email");
   const senha = document.getElementById("password");
   const confirmaSenha = document.getElementById("confirmaSenha");
 
-  const usuarioJaExiste = localStorage.getItem(login.value);
+  
+  const usuarioJaExiste = listaUsuarios.find (usuario => usuario.email === login.value)
 
-  if (usuarioJaExiste === login.value) {
+
+  if (usuarioJaExiste) {
     alert("Usuário já cadastrado");
     return;
   }
@@ -25,9 +29,9 @@ form.addEventListener("submit", (event) => {
     mensagens: [],
   };
 
+  listaUsuarios.push(user)
 
-
-  localStorage.setItem(login.value, JSON.stringify(user));
+  localStorage.setItem("usuarios", JSON.stringify(listaUsuarios));
   alert("Usuário cadastrado com sucesso, faça seu login!");
   location.href = "./index.html";
 });

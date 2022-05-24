@@ -1,25 +1,37 @@
 "use strict";
 const form = document.querySelector("#infos_mens");
 const corpoTabela = document.querySelector("#tbody");
+const usuariologado = JSON.parse(localStorage.getItem("usuariologado") ?? "");
+console.log(usuariologado);
+let editarMenssagem = false;
+let indiceEditar = 0;
 const recuperarLocalStorage = () => {
-    const recados = JSON.parse(localStorage.getItem("recados") || "[]");
+    const recados = JSON.parse(localStorage.getItem(usuariologado) || "[]");
     return recados;
 };
 const atualizarLocalStorage = (recados) => {
-    localStorage.setItem("recados", JSON.stringify(recados));
+    localStorage.setItem(usuariologado, JSON.stringify(recados));
 };
 const salvarRecado = (event) => {
     event.preventDefault();
     const descricao = form?.descricao.value;
     const recado = form?.detalhamento.value;
     const recados = recuperarLocalStorage();
-    recados.push({
-        id: definirID() + 1,
-        descricao,
-        recado,
-    });
+    if (editarMenssagem === true) {
+        recados[indiceEditar].descricao = descricao;
+        recados[indiceEditar].recado = recado;
+        alert("Edição de menssagem realizada");
+        editarMenssagem = false;
+    }
+    else {
+        recados.push({
+            id: definirID() + 1,
+            descricao,
+            recado,
+        });
+        alert("Recado adicionado com sucesso");
+    }
     atualizarLocalStorage(recados);
-    alert("Recado adicionado com sucesso");
     preencherTabela();
     form.reset();
 };
@@ -60,10 +72,10 @@ const editarRecado = (id) => {
     if (indiceRecado1 < 0)
         return;
     console.log(listarecados[indiceRecado1]);
-    listarecados[indiceRecado1].descricao = form.descricao.value;
-    listarecados[indiceRecado1].recado = form.detalhamento.value;
-    atualizarLocalStorage(listarecados);
-    preencherTabela();
+    form.descricao.value = listarecados[indiceRecado1].descricao;
+    form.detalhamento.value = listarecados[indiceRecado1].recado;
+    editarMenssagem = true;
+    indiceEditar = indiceRecado1;
 };
 const definirID = () => {
     let max = 0;
