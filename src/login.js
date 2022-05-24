@@ -25,6 +25,8 @@ form.addEventListener("submit", (event) => {
     mensagens: [],
   };
 
+
+
   localStorage.setItem(login.value, JSON.stringify(user));
   alert("Usuário cadastrado com sucesso, faça seu login!");
   location.href = "./index.html";

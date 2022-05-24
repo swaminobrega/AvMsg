@@ -30,11 +30,15 @@ const preencherTabela = () => {
         corpoTabela.innerHTML += `
         <tr>
             <td>${recado.id}.</td>
+
             <td>${recado.descricao}</td>
+
             <td>${recado.recado}</td>
-            <td>
-                <img src="./image/trash.svg" alt="imagem de lixeira" width="15" onclick="removeRecado(${recado.id})" >
-                <img src="./image/edit.svg.png" alt="imagem de edição" width="15" onclick="editaRecado(${recado.id})" >
+
+            <td><img src="./image/trash.svg" alt="imagem de lixeira" width="15" onclick="removeRecado(${recado.id})" >
+            </td>
+
+            <td><img src="./image/edit.svg.png" alt="imagem de edição" width="15" onclick="editarRecado(${recado.id})" >
             </td>
         </tr>
       `;
@@ -48,6 +52,17 @@ const removeRecado = (id) => {
     recados.splice(indiceRecado, 1);
     atualizarLocalStorage(recados);
     alert("Recado removido com sucesso");
+    preencherTabela();
+};
+const editarRecado = (id) => {
+    const listarecados = recuperarLocalStorage();
+    const indiceRecado1 = listarecados.findIndex((recado) => recado.id === id);
+    if (indiceRecado1 < 0)
+        return;
+    console.log(listarecados[indiceRecado1]);
+    listarecados[indiceRecado1].descricao = form.descricao.value;
+    listarecados[indiceRecado1].recado = form.detalhamento.value;
+    atualizarLocalStorage(listarecados);
     preencherTabela();
 };
 const definirID = () => {

@@ -26,6 +26,8 @@ form.addEventListener("submit", (event) => {
   ) {
     alert("Login realizado com sucesso!");
 
+  
+
     location.href = "./menssagem.html";
   }
 });

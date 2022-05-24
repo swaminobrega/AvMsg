@@ -86,6 +86,10 @@ table{
     width: 70px;
   }
 
+  th#thedit {
+    width: 70px;
+  }
+
   input#descricao {
     width:20%;
     
